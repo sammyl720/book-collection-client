@@ -1,13 +1,112 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+body {
+    min-width: 100vw;
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(to bottom right, #4176e0, #1d4492, #4176e0);
+}
+
+.book-list {
+    color: black;
+    width: 80%;
+    margin: 5px auto;
+    padding: 1px;
+}
+
+.book-list-item {
+    display: flex;
+    justify-content: space-between;
+    animation: fadeIn 500ms ease-in;
+    background: white;
+    padding: 10px;
+    margin: 10px auto;
+    width: 100%;
+    box-shadow: 4px 4px 15px -10px black
+}
+
+.book-list-item:hover {
+    box-shadow: 10px 10px 10px -10px black
+}
+
+.delete-btn {
+    color: red;
+    background: transparent;
+    padding: 1px 2px;
+    border-radius: 50%;
+    outline: none;
+    font-weight: 600;
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.edit-btn {
+    color: blue;
+    background: transparent;
+    padding: 1px 2px;
+    border-radius: 50%;
+    outline: none;
+    font-weight: 600;
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.book-list-item h3 {
+    flex: 2;
+}
+
+.book-list-item p {
+    flex: 1;
+}
+
+.form-container {
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 1.4em;
+    width: 80%;
+    background: white;
+}
+
+.form-container form {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.form-container form input[type="submit"] {
+    background: black;
+    border: 1px solid orange;
+    padding: 4px 6px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-group label {
+    flex: 2;
+}
+
+.input-group input {
+    flex: 3;
+    margin: 4px;
 }

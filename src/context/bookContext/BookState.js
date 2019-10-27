@@ -4,7 +4,8 @@ import { useQuery, useMutation } from '@apollo/react-hooks'
 import {
   getAllBooks,
   addABook,
-  deleteBookById
+  deleteBookById,
+  updateBookById
 } from '../../graphqlClient/operations'
 import bookReducer from './bookReducer'
 const BookState = props => {
@@ -13,6 +14,7 @@ const BookState = props => {
   // add a book to back end
   const [addBook] = useMutation(addABook)
   const [deleteABook] = useMutation(deleteBookById)
+  const [updateABook] = useMutation(updateBookById)
   const initailState = {
     books: [],
     loading,
@@ -49,6 +51,16 @@ const BookState = props => {
       dispatch({ type: 'SET_ERROR', payload: error })
     }
   }
+  const handleBookUpdate = async (id, data) => {
+    try {
+      const response = await updateABook({ variables: { id, data } })
+      console.log(response)
+      dispatch({ type: 'UPDATE_BOOK', payload: response.data.updateBook })
+    } catch (error) {
+      console.log(error)
+      dispatch({ type: 'SET_ERROR', payload: error })
+    }
+  }
   return (
     <BookContext.Provider
       value={{
@@ -56,7 +68,8 @@ const BookState = props => {
         loading: state.loading || false,
         error: state.error || null,
         handleBookAdd,
-        handleBookDelete
+        handleBookDelete,
+        handleBookUpdate
       }}
     >
       {props.children}

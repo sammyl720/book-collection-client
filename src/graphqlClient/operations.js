@@ -29,4 +29,13 @@ const deleteBookById = gql`
     }
   }
 `
-export { getAllBooks, addABook, deleteBookById }
+const updateBookById = gql`
+  mutation($id: ID!, $data: EditBookInput!) {
+    updateBook(id: $id, data: $data) {
+      author
+      title
+      id
+    }
+  }
+`
+export { getAllBooks, addABook, deleteBookById, updateBookById }

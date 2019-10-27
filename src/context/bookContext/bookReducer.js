@@ -24,6 +24,18 @@ export default (state, action) => {
         error: null,
         books: [...state.books, action.payload]
       }
+    case 'UPDATE_BOOK':
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        books: state.books.map(book => {
+          if (book.id === action.payload.id) {
+            return action.payload
+          }
+          return book
+        })
+      }
     case 'DELETE_BOOK':
       return {
         ...state,

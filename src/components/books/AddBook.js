@@ -1,4 +1,5 @@
 import React from 'react'
+import { Icon, Button, Input, GridRow, GridColumn } from 'semantic-ui-react'
 import bookContext from '../../context/bookContext/bookContext'
 const AddBook = () => {
   const [data, setData] = React.useState({
@@ -26,31 +27,34 @@ const AddBook = () => {
     })
   }
   return (
-    <div className='form-container'>
-      <form onSubmit={handleSubmit}>
-        <div className='input-group'>
-          <label htmlFor='title'>Title</label>
-          <input
-            type='text'
-            name='title'
-            value={data.title}
-            id='title'
-            onChange={handleChange}
-          />
-        </div>
-        <div className='input-group'>
-          <label htmlFor='author'>Author</label>
-          <input
-            type='text'
-            name='author'
-            id='author'
-            value={data.author}
-            onChange={handleChange}
-          />
-        </div>
-        <input type='submit' value='Add' />
-      </form>
-    </div>
+    <GridRow as='form' onSubmit={handleSubmit}>
+      <GridColumn width={4}>
+        <Input
+          label='Title'
+          type='text'
+          name='title'
+          value={data.title}
+          id='title'
+          onChange={handleChange}
+        />
+      </GridColumn>
+      <GridColumn width={4}>
+        <Input
+          label='author'
+          type='text'
+          name='author'
+          id='author'
+          value={data.author}
+          onChange={handleChange}
+        />
+      </GridColumn>
+      <GridColumn width={4}>
+        <Button icon labelPosition='right' type='submit'>
+          Add
+          <Icon name='add' />
+        </Button>
+      </GridColumn>
+    </GridRow>
   )
 }
 
